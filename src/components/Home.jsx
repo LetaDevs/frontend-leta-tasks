@@ -1,5 +1,6 @@
 import React from 'react';
 import Banner from './Banner';
+import Footer from './Footer';
 import Navbar from './Navbar';
 import Nosotros from './Nosotros';
 import Precios from './Precios';
@@ -11,6 +12,7 @@ const Home = () => {
 			<Banner />
 			<Nosotros />
 			<Precios />
+			<Footer />
 		</>
 	);
 };
