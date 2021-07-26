@@ -46,7 +46,7 @@ const Navbar = () => {
 					</Hidden>
 					<Hidden mdUp>
 						<button className='menu-icon-btn' onClick={handleMenu}>
-							<div className='menu-icon'></div>
+							{!scroll ? <div className='menu-icon'></div> : <div className='menu-icon-negro'></div>}
 						</button>
 					</Hidden>
 				</div>

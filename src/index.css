@@ -41,6 +41,7 @@ html {
 
 body {
 	font-family: 'Poppins', sans-serif;
+	color: var(--negro);
 }
 h1,
 h2,
@@ -55,6 +56,9 @@ a {
 section {
 	width: 100%;
 	min-height: 100vh;
+}
+img {
+	max-width: 100%;
 }
 .btn {
 	border: none;
@@ -142,13 +146,22 @@ section {
 	background-position: center;
 	background-size: contain;
 }
+.menu-icon-negro {
+	width: 100%;
+	height: 100%;
+	background-image: url(../src/static/img/menu-negro.svg);
+	background-position: center;
+	background-size: contain;
+}
 
 .navbar__menu-dos {
 	width: 100%;
 	height: 35%;
-	position: absolute;
+	position: fixed;
 	bottom: -500px;
+	z-index: 10000;
 	transition: var(--transition);
+	border-top: 1px solid var(--gris);
 }
 .navbar__menu-dos.activo {
 	bottom: 0;
@@ -233,5 +246,112 @@ section {
 	}
 	.banner__btn {
 		font-size: 16px;
+	}
+}
+
+/** Nosotros **/
+.nosotros__contenedor {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: var(--ancho);
+	margin: 0 auto;
+}
+.nosotros__contenedor div {
+	width: 100%;
+	height: 100vh;
+}
+.nosotros__contenido {
+	padding: 100px 0;
+}
+.nosotros__titulo span {
+	color: var(--azul);
+}
+.nosotros__descripcion {
+	margin-top: 200px;
+	width: 60%;
+	position: relative;
+}
+.nosotros__descripcion::before {
+	content: '';
+	width: 25%;
+	height: 6px;
+	background-color: var(--azul);
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+}
+.nosotros__parrafo {
+	width: 60%;
+	margin: 50px 0;
+}
+.nosotros__parrafo span {
+	font-weight: 700;
+}
+.nosotros__parrafo .logo-dos {
+	color: var(--azul);
+}
+.nosotros__contenido .btn {
+	margin: 0;
+}
+.nosotros__img {
+	width: 50%;
+	margin: 0 auto;
+	padding-top: 10%;
+}
+
+@media screen and (max-width: 576px) {
+	.nosotros__titulo {
+		text-align: center;
+	}
+	.nosotros__descripcion {
+		margin-top: 100px;
+		width: 100%;
+		text-align: justify;
+	}
+	.nosotros__parrafo {
+		width: 100%;
+		margin: 50px 0;
+	}
+	.nosotros__contenido .btn {
+		display: block;
+		text-align: center;
+	}
+}
+@media screen and (max-width: 768px) {
+	.nosotros__contenedor {
+		width: 80%;
+	}
+	.nosotros__titulo {
+		text-align: center;
+	}
+	.nosotros__descripcion {
+		margin-top: 100px;
+		width: 100%;
+		text-align: justify;
+	}
+	.nosotros__parrafo {
+		width: 100%;
+		margin: 50px 0;
+	}
+	.nosotros__contenido .btn {
+		width: 50%;
+	}
+}
+@media screen and (max-width: 1024px) {
+	/* .nosotros__contenedor {
+		width: 80%;
+	} */
+	.nosotros__descripcion {
+		margin-top: 100px;
+		width: 80%;
+		text-align: justify;
+	}
+	.nosotros__parrafo {
+		width: 80%;
+		margin: 50px 0;
+	}
+	.nosotros__img {
+		padding-top: 15%;
 	}
 }
