@@ -53,12 +53,20 @@ a {
 	text-decoration: none;
 	color: #fff;
 }
-section {
+/* section {
 	width: 100%;
 	min-height: 100vh;
 }
+@media screen and (max-width: 1024px) {
+	section {
+		height: 50vh;
+	}
+} */
 img {
 	max-width: 100%;
+}
+li {
+	list-style: none;
 }
 .btn {
 	border: none;
@@ -301,6 +309,9 @@ img {
 }
 
 @media screen and (max-width: 1024px) {
+	.nosotros {
+		height: 50vh;
+	}
 	.nosotros__contenedor {
 		width: 80%;
 	}
@@ -337,6 +348,9 @@ img {
 }
 
 @media screen and (max-width: 576px) {
+	.nosotros {
+		height: 70vh;
+	}
 	.nosotros__contenedor {
 		width: 90%;
 	}
@@ -356,5 +370,130 @@ img {
 		display: block;
 		width: 100%;
 		text-align: center;
+	}
+}
+
+/** Precios **/
+.precios {
+	background-color: var(--gris);
+}
+.precios__contenedor {
+	max-width: var(--ancho);
+	margin: 0 auto;
+	height: 100vh;
+	padding-top: 100px;
+}
+.precios__titulo,
+.precios__parrafo {
+	text-align: center;
+}
+.precios__parrafo {
+	width: 40%;
+	margin: 0 auto;
+}
+.precios__titulo span {
+	color: var(--azul);
+}
+
+.precios__tarjetas {
+	display: flex;
+	justify-content: space-evenly;
+	margin-top: 20px;
+}
+.tarjeta {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	max-width: 25%;
+	height: 700px;
+	padding: 20px;
+	background-color: #fff;
+}
+.tarjeta__titulo {
+	font-size: 1.5em;
+}
+.tarjeta__descripcion {
+	margin: 30px 0;
+}
+.tarjeta__precio {
+	font-weight: 700;
+	font-size: 2em;
+}
+.tarjeta__boton {
+	margin: 30px 0;
+	display: block;
+	border: 2px solid var(--negro);
+	color: var(--negro);
+	text-align: center;
+	transition: var(--transition);
+}
+.tarjeta__boton:hover {
+	background-color: var(--negro);
+	color: #fff;
+}
+.tarjeta__descripcion-beneficios {
+	margin-bottom: 20px;
+}
+.tarjeta__beneficio {
+	margin-bottom: 10px;
+}
+.tarjeta__beneficio img {
+	margin-right: 20px;
+}
+.tarjeta.principal {
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.principal .tarjeta__titulo {
+	color: var(--azul);
+}
+.principal .tarjeta__boton {
+	background-color: var(--azul);
+	border: 2px solid var(--azul);
+	color: #fff;
+	transition: var(--transition);
+}
+.principal .tarjeta__boton:hover {
+	border: 2px solid var(--negro);
+	background-color: var(--negro);
+}
+
+@media screen and (max-width: 1024px) {
+	.precios {
+		height: 80vh;
+	}
+	.precios__parrafo {
+		width: 60%;
+		margin: 0 auto;
+	}
+	.tarjeta {
+		max-width: 30%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.precios {
+		height: 170vh;
+	}
+	.precios__tarjetas {
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+	.tarjeta {
+		max-width: 45%;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.precios {
+		height: 300vh;
+	}
+	.precios__parrafo {
+		width: 90%;
+		margin: 0 auto;
+	}
+	.precios__tarjetas {
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+	.tarjeta {
+		max-width: 90%;
 	}
 }
