@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 
+import 'animate.css';
+
 const VerificarToken = () => {
 	const [formValues, setFormValues] = useForm({
 		token: '',
@@ -10,7 +12,7 @@ const VerificarToken = () => {
 
 	return (
 		<div className='form-bg'>
-			<div className='form-contenedor'>
+			<div className='form-contenedor animate__animated animate__fadeIn'>
 				<div>
 					<Link to='/'>
 						<h4 className='logo'>
