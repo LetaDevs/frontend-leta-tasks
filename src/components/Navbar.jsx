@@ -22,20 +22,26 @@ const Navbar = () => {
 
 	return (
 		<>
-			<div className={`navbar ${scroll && 'scrolled'}`}>
-				<div className='navbar__contenido'>
+			<div className={`navbar ${scroll && 'navbar--scrolled'}`}>
+				<div className='navbar__contenido container'>
 					<a href='#home'>
 						<h1 className='logo'>
-							LETA<span>Tasks</span>
+							LETA<span className='logo__two'>Tasks</span>
 						</h1>
 					</a>
 					<Hidden smDown>
 						<nav className='navbar__menu'>
-							<a href='#home'>Home</a>
-							<a href='#nosotros'>Nosotros</a>
-							<a href='#precios'>Precios</a>
+							<a className='navbar__menu-link' href='#home'>
+								Home
+							</a>
+							<a className='navbar__menu-link' href='#about'>
+								Nosotros
+							</a>
+							<a className='navbar__menu-link' href='#prices'>
+								Precios
+							</a>
 						</nav>
-						<div className='navbar__cuentas'>
+						<div className='navbar__auth'>
 							<Link to='/log-in' className='log-in'>
 								Iniciar sesión
 							</Link>
@@ -45,23 +51,33 @@ const Navbar = () => {
 						</div>
 					</Hidden>
 					<Hidden mdUp>
-						<button className='menu-icon-btn' onClick={handleMenu}>
-							{!scroll ? <div className='menu-icon'></div> : <div className='menu-icon-negro'></div>}
+						<button className='menu-btn' onClick={handleMenu}>
+							{!scroll ? (
+								<div className='menu-btn__icon menu-btn__icon--white'></div>
+							) : (
+								<div className='menu-btn__icon menu-btn__icon--black'></div>
+							)}
 						</button>
 					</Hidden>
 				</div>
 			</div>
 			<Hidden mdUp>
-				<div className={`navbar__menu-dos ${menu && 'activo'}`}>
-					<div>
-						<div className='navbar__menu-dos--menu'>
-							<a href='#home'>Home</a>
-							<a href='#nosotros'>Nosotros</a>
-							<a href='#precios'>Precios</a>
-							<Link to='/log-in' className='btn banner__btn menu-btn'>
+				<div className={`navbar__menu-two ${menu && 'navbar__menu-two--active'}`}>
+					<div className='navbar__menu-two-container'>
+						<div className='navbar__menu-two-menu'>
+							<a className='navbar__menu-two-link' href='#home'>
+								Home
+							</a>
+							<a className='navbar__menu-two-link' href='#about'>
+								Nosotros
+							</a>
+							<a className='navbar__menu-two-link' href='#prices'>
+								Precios
+							</a>
+							<Link to='/log-in' className='btn navbar__menu-two-btn'>
 								Iniciar sesión
 							</Link>
-							<Link to='/sign-up' className='btn banner__btn menu-btn'>
+							<Link to='/sign-up' className='btn navbar__menu-two-btn'>
 								Registrarse
 							</Link>
 						</div>

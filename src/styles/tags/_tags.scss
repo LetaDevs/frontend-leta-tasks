@@ -1,0 +1,26 @@
+html {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+*,
+*:before,
+*:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+body {
+	font-family: 'Poppins', sans-serif;
+	font-size: $unit * 2;
+	color: $negro;
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: #fff;
+}
+img {
+	max-width: 100%;
+}

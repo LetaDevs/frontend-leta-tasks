@@ -1,0 +1,128 @@
+.navbar {
+	position: fixed;
+	padding: 10px 0px;
+	width: 100%;
+	z-index: 10000;
+	transition: 0.5s;
+
+	@include mq($xl) {
+		padding: 20px 0px;
+	}
+
+	&__contenido {
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&--scrolled {
+		padding: 5px 0px;
+		background-color: #fff;
+		box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+
+		.logo,
+		.navbar__menu-link,
+		.log-in,
+		.sign-up {
+			color: $negro;
+		}
+
+		@include mq($xl) {
+			padding: 10px 0px;
+		}
+	}
+
+	&__menu {
+		display: flex;
+		gap: 20px;
+
+		&-link {
+			&:hover {
+				color: $azul;
+			}
+		}
+	}
+	&__auth {
+		display: flex;
+		gap: 20px;
+
+		.log-in:hover,
+		.sign-up:hover {
+			color: $azul;
+		}
+	}
+}
+.logo {
+	color: #fff;
+	font-size: $unit * 3;
+	transition: $transition;
+	&__two {
+		color: $azul;
+	}
+
+	@include mq($lg) {
+		font-size: $unit * 3;
+	}
+}
+.menu-btn {
+	width: 30px;
+	height: 30px;
+	background-color: transparent;
+	border: none;
+	outline: none;
+
+	&__icon {
+		width: 100%;
+		height: 100%;
+		background-position: center;
+		background-size: contain;
+
+		&--white {
+			background-image: url(../src/static/img/menu-blanco.svg);
+		}
+		&--black {
+			background-image: url(../src/static/img/menu-negro.svg);
+		}
+	}
+}
+.navbar__menu-two {
+	width: 100%;
+	height: 35%;
+	position: fixed;
+	bottom: -500px;
+	z-index: 10000;
+	transition: $transition;
+
+	&--active {
+		bottom: 0;
+	}
+	&-container {
+		background-color: #fff;
+		width: 100%;
+		height: 100%;
+		border-top: 1px solid $gris;
+		border-radius: 10px 10px 0 0;
+	}
+	&-menu {
+		width: 100%;
+		height: 100px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+		padding-top: 10px;
+	}
+	&-btn {
+		@include btn(#fff, $negro);
+		width: 70%;
+		text-align: center;
+
+		@include mq($md) {
+			width: 50%;
+		}
+	}
+
+	&-link {
+		color: $negro;
+	}
+}

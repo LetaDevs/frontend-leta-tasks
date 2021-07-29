@@ -11,20 +11,20 @@ const VerificarToken = () => {
 	const {token} = formValues;
 
 	return (
-		<div className='form-bg'>
-			<div className='form-contenedor animate__animated animate__fadeIn'>
+		<div className='form__bg'>
+			<div className='form__container animate__animated animate__fadeIn'>
 				<div>
 					<Link to='/'>
-						<h4 className='logo'>
-							LETA<span>Tasks</span>
+						<h4 className='form__logo'>
+							LETA<span className='form__logo-two'>Tasks</span>
 						</h4>
 					</Link>
-					<h2 className='form__titulo'>TOKEN DE VERIFICACIÓN</h2>
-					<p className='form__ayuda'>revisa tu correo para obtenerlo</p>
+					<h2 className='form__title'>TOKEN DE VERIFICACIÓN</h2>
+					<p className='form__tip'>revisa tu correo para obtenerlo</p>
 				</div>
 				<form>
-					<div className='form__campo'>
-						<label htmlFor='token' className={`form__label`}>
+					<div className='form__field'>
+						<label htmlFor='token' className='form__label'>
 							Token:
 						</label>
 						<input
@@ -38,14 +38,14 @@ const VerificarToken = () => {
 						/>
 					</div>
 
-					<button type='submit' className='form__boton btn'>
+					<button type='submit' className='form__btn'>
 						ENVIAR
 					</button>
 				</form>
 				<div className='form__extras'>
 					<p>
 						Aún no tienes cuenta?{' '}
-						<Link to='/sign-up' className='form__extras-enlace'>
+						<Link to='/sign-up' className='form__extras-link'>
 							crea una gratis
 						</Link>
 					</p>

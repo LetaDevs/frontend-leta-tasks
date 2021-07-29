@@ -14,19 +14,19 @@ const NuevoPassword = () => {
 	const {nombre, email, password, rePassword} = formValues;
 
 	return (
-		<div className='form-bg'>
-			<div className='form-contenedor animate__animated animate__fadeIn'>
+		<div className='form__bg'>
+			<div className='form__container animate__animated animate__fadeIn'>
 				<div>
 					<Link to='/'>
-						<h4 className='logo'>
-							LETA<span>Tasks</span>
+						<h4 className='form__logo'>
+							LETA<span className='form__logo-two'>Tasks</span>
 						</h4>
 					</Link>
-					<h2 className='form__titulo'>NUEVO PASSWORD</h2>
+					<h2 className='form__title'>NUEVO PASSWORD</h2>
 				</div>
 				<form>
-					<div className='form__campo'>
-						<label htmlFor='password' className={`form__label`}>
+					<div className='form__field'>
+						<label htmlFor='password' className='form__label'>
 							Password:
 						</label>
 						<input
@@ -39,8 +39,8 @@ const NuevoPassword = () => {
 							onChange={setFormValues}
 						/>
 					</div>
-					<div className='form__campo'>
-						<label htmlFor='rePassword' className={`form__label`}>
+					<div className='form__field'>
+						<label htmlFor='rePassword' className='form__label'>
 							Repetir password:
 						</label>
 						<input
@@ -53,7 +53,7 @@ const NuevoPassword = () => {
 							onChange={setFormValues}
 						/>
 					</div>
-					<button type='submit' className='form__boton btn'>
+					<button type='submit' className='form__btn'>
 						ENVIAR
 					</button>
 				</form>

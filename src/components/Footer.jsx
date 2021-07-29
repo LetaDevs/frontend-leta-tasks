@@ -3,9 +3,9 @@ import React from 'react';
 const Footer = () => {
 	return (
 		<section className='footer'>
-			<div className='footer__contenedor'>
-				<div className='footer__enlaces'>
-					<div className='footer__enlaces-uno'>
+			<div className='footer__container container'>
+				<div className='footer__links'>
+					<div className='footer__links-one'>
 						<h4>LETA Task</h4>
 						<ul>
 							<li>
@@ -25,7 +25,7 @@ const Footer = () => {
 							</li>
 						</ul>
 					</div>
-					<div className='footer__enlaces-dos'>
+					<div className='footer__links-two'>
 						<h4>Acerca de nosotros</h4>
 						<ul>
 							<li>
@@ -45,7 +45,7 @@ const Footer = () => {
 							</li>
 						</ul>
 					</div>
-					<div className='footer__enlaces-tres'>
+					<div className='footer__links-three'>
 						<h4>Recursos</h4>
 						<ul>
 							<li>
@@ -65,7 +65,7 @@ const Footer = () => {
 							</li>
 						</ul>
 					</div>
-					<div className='footer__enlaces-cuatro'>
+					<div className='footer__links-four'>
 						<h4>Aprende</h4>
 						<ul>
 							<li>

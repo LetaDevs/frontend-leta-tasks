@@ -11,19 +11,19 @@ const RePassword = () => {
 	const {email} = formValues;
 
 	return (
-		<div className='form-bg'>
-			<div className='form-contenedor animate__animated animate__fadeIn'>
+		<div className='form__bg'>
+			<div className='form__container animate__animated animate__fadeIn'>
 				<div>
 					<Link to='/'>
-						<h4 className='logo'>
-							LETA<span>Tasks</span>
+						<h4 className='form__logo'>
+							LETA<span className='form__logo-two'>Tasks</span>
 						</h4>
 					</Link>
-					<h2 className='form__titulo'>RESTABLECER PASSWORD</h2>
+					<h2 className='form__title'>RESTABLECER PASSWORD</h2>
 				</div>
 				<form>
-					<div className='form__campo'>
-						<label htmlFor='email' className={`form__label`}>
+					<div className='form__field'>
+						<label htmlFor='email' className='form__label'>
 							Email:
 						</label>
 						<input
@@ -37,20 +37,14 @@ const RePassword = () => {
 						/>
 					</div>
 
-					<button type='submit' className='form__boton btn'>
+					<button type='submit' className='form__btn'>
 						ENVIAR
 					</button>
 				</form>
 				<div className='form__extras'>
 					<p>
-						Olvidaste tu password?{' '}
-						<Link to='/re-password' className='form__extras-enlace'>
-							restablécelo
-						</Link>
-					</p>
-					<p>
 						Aún no tienes cuenta?{' '}
-						<Link to='/sign-up' className='form__extras-enlace'>
+						<Link to='/sign-up' className='form__extras-link'>
 							crea una gratis
 						</Link>
 					</p>

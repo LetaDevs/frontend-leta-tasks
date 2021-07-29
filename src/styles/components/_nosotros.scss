@@ -1,0 +1,70 @@
+.about {
+	&__container {
+		display: flex;
+		padding: 50px 0;
+
+		@include mq($md) {
+			padding-right: 30%;
+		}
+
+		@include mq($lg) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 20px;
+			padding: 60px 0;
+		}
+	}
+
+	&__title {
+		&-two {
+			color: $azul;
+		}
+	}
+
+	&__description {
+		margin-top: 40px;
+		position: relative;
+
+		&::before {
+			content: '';
+			width: 25%;
+			height: 6px;
+			background-color: $azul;
+			position: absolute;
+			bottom: -15px;
+			left: 0;
+		}
+
+		@include mq($xl) {
+			margin-top: 30%;
+			width: 70%;
+		}
+	}
+
+	&__text {
+		margin-top: 40px;
+
+		.logo-uno,
+		.logo-dos {
+			font-weight: bold;
+		}
+		.logo-dos {
+			color: $azul;
+		}
+	}
+
+	&__btn {
+		@include btn(#fff, $azul);
+		display: inline-block;
+		margin-top: 50px;
+		text-align: center;
+
+		@include mq($xl) {
+			width: 45%;
+		}
+	}
+
+	@include mq($xl) {
+		height: 100vh;
+	}
+}

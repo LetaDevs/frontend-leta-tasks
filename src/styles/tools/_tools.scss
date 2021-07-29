@@ -1,0 +1,22 @@
+@mixin mq($size) {
+	@media (min-width: $size) {
+		@content;
+	}
+}
+
+@mixin btn($color, $bg-color) {
+	border: none;
+	outline: none;
+	padding: 10px 20px;
+	font-weight: 600;
+	font-size: 20px;
+	cursor: pointer;
+	color: $color;
+	background-color: $bg-color;
+	transition: $transition;
+
+	&:hover {
+		background-color: darken($color: $bg-color, $amount: 5);
+		letter-spacing: 1px;
+	}
+}
