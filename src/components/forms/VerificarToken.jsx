@@ -1,14 +1,59 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom';
+import {AuthContext} from '../../contexts/AuthContext';
 import useForm from '../../hooks/useForm';
+import Spinner from '../extras/Spinner';
+import Alert from '../extras/Alert';
 
 import 'animate.css';
 
 const VerificarToken = () => {
+	const {fetching, resultado, setResetResultado, setActivarCuenta} = useContext(AuthContext);
+
+	const [msg, setMsg] = useState({
+		categoria: '',
+		msg: '',
+	});
+	const [alerta, setAlerta] = useState(false);
+
 	const [formValues, setFormValues] = useForm({
 		token: '',
 	});
 	const {token} = formValues;
+
+	useEffect(() => {
+		if (Object.keys(resultado).length === 0) return;
+
+		setAlerta(true);
+		setMsg({
+			categoria: resultado.categoria,
+			msg: resultado.msg,
+		});
+		setTimeout(() => {
+			setAlerta(false);
+			setResetResultado(true);
+		}, 3000);
+		// eslint-disable-next-line
+	}, [resultado]);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		if (token.trim() === '') {
+			setAlerta(true);
+			setMsg({
+				categoria: 'error',
+				msg: 'Debes ingresar un token!',
+			});
+			const timer = setTimeout(() => {
+				setAlerta(false);
+				return clearTimeout(timer);
+			}, 3000);
+			return;
+		}
+
+		setActivarCuenta(token);
+	};
 
 	return (
 		<div className='form__bg'>
@@ -22,7 +67,11 @@ const VerificarToken = () => {
 					<h2 className='form__title'>TOKEN DE VERIFICACIÓN</h2>
 					<p className='form__tip'>revisa tu correo para obtenerlo</p>
 				</div>
-				<form>
+				<form onSubmit={handleSubmit}>
+					<div className='form__alert'>
+						{alerta ? <Alert categoria={msg.categoria} msg={msg.msg} /> : null}
+						{fetching ? <Spinner /> : null}
+					</div>
 					<div className='form__field'>
 						<label htmlFor='token' className='form__label'>
 							Token:

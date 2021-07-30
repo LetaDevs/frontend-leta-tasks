@@ -1,14 +1,63 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import useForm from '../../hooks/useForm';
+import Alert from '../extras/Alert';
+import Spinner from '../extras/Spinner';
+import {AuthContext} from '../../contexts/AuthContext';
 
 import 'animate.css';
 
 const RePassword = () => {
-	const [formValues, setFormValues] = useForm({
-		password: '',
+	const {fetching, resultado, setResetResultado, setResetPassword} = useContext(AuthContext);
+
+	const [msg, setMsg] = useState({
+		categoria: '',
+		msg: '',
+	});
+
+	const [alerta, setAlerta] = useState(false);
+
+	const [formValues, handleChange, resetForm] = useForm({
+		email: '',
 	});
 	const {email} = formValues;
+
+	useEffect(() => {
+		if (Object.keys(resultado).length === 0) return;
+
+		setAlerta(true);
+		setMsg({
+			categoria: resultado.categoria,
+			msg: resultado.msg,
+		});
+		setTimeout(() => {
+			setAlerta(false);
+			if (resultado.code === 200) {
+				resetForm();
+				setResetResultado(true);
+			}
+		}, 3000);
+		//eslint-disable-next-line
+	}, [resultado]);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		if (email.trim() === '') {
+			setAlerta(true);
+			setMsg({
+				categoria: 'error',
+				msg: 'ingresa tu email!',
+			});
+			const timer = setTimeout(() => {
+				setAlerta(false);
+				return clearTimeout(timer);
+			}, 3000);
+			return;
+		}
+
+		setResetPassword(email);
+	};
 
 	return (
 		<div className='form__bg'>
@@ -21,7 +70,11 @@ const RePassword = () => {
 					</Link>
 					<h2 className='form__title'>RESTABLECER PASSWORD</h2>
 				</div>
-				<form>
+				<form onSubmit={handleSubmit}>
+					<div className='form__alert'>
+						{alerta ? <Alert categoria={msg.categoria} msg={msg.msg} /> : null}
+						{fetching ? <Spinner /> : null}
+					</div>
 					<div className='form__field'>
 						<label htmlFor='email' className='form__label'>
 							Email:
@@ -33,7 +86,7 @@ const RePassword = () => {
 							id='email'
 							className='form__input'
 							autoComplete='off'
-							onChange={setFormValues}
+							onChange={handleChange}
 						/>
 					</div>
 

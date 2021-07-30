@@ -1,15 +1,61 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import useForm from '../../hooks/useForm';
-
+import {AuthContext} from '../../contexts/AuthContext';
+import Alert from '../extras/Alert';
+import Spinner from '../extras/Spinner';
 import 'animate.css';
 
 const IniciarSesion = () => {
+	const {setLogin, fetching, resultado, setResetResultado} = useContext(AuthContext);
+
+	const [msg, setMsg] = useState({
+		categoria: '',
+		msg: '',
+	});
+	const [alerta, setAlerta] = useState(false);
+
 	const [formValues, setFormValues] = useForm({
 		email: '',
 		password: '',
 	});
 	const {email, password} = formValues;
+
+	useEffect(() => {
+		if (Object.keys(resultado).length === 0) return;
+
+		setAlerta(true);
+		setMsg({
+			categoria: resultado.categoria,
+			msg: resultado.msg,
+		});
+		setTimeout(() => {
+			setAlerta(false);
+			setResetResultado(true);
+		}, 3000);
+		// eslint-disable-next-line
+	}, [resultado]);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		const checkValues = Object.values(formValues).every((value) => value.trim() !== '');
+
+		if (!checkValues) {
+			setAlerta(true);
+			setMsg({
+				categoria: 'error',
+				msg: 'Todos los campos son obligatorios!',
+			});
+			const timer = setTimeout(() => {
+				setAlerta(false);
+				return clearTimeout(timer);
+			}, 3000);
+			return;
+		}
+
+		setLogin(formValues);
+	};
 
 	return (
 		<div className='form__bg'>
@@ -22,7 +68,11 @@ const IniciarSesion = () => {
 					</Link>
 					<h2 className='form__title'>INICIAR SESIÓN</h2>
 				</div>
-				<form>
+				<form onSubmit={handleSubmit}>
+					<div className='form__alert'>
+						{alerta ? <Alert categoria={msg.categoria} msg={msg.msg} /> : null}
+						{fetching ? <Spinner /> : null}
+					</div>
 					<div className='form__field'>
 						<label htmlFor='email' className='form__label'>
 							Email:
