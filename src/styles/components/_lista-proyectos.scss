@@ -1,0 +1,38 @@
+.lista-proyectos {
+	color: #fff;
+	margin: 50px 0;
+	&__titulo {
+		text-align: center;
+		font-size: 18px;
+	}
+	&__proyecto {
+		background-color: darken($color: $negro, $amount: 5);
+		margin-top: $unit * 2;
+		padding: $unit;
+		font-weight: 600;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		transition: $transition;
+
+		&-icon {
+			background-image: url('./static/img/arrow-right.svg');
+			background-position: center center;
+			background-size: cover;
+			width: $unit * 3;
+			height: $unit * 3;
+		}
+
+		&:hover {
+			background-color: $azul;
+			cursor: pointer;
+		}
+
+		&:hover span {
+			scale: 2;
+		}
+	}
+}
+.proyecto--active {
+	background-color: $azul;
+}

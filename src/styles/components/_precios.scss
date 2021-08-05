@@ -1,9 +1,9 @@
 .prices {
 	background-color: $gris;
 
-	// @include mq($xl) {
-	// 	height: 100vh;
-	// }
+	@include mq($xl) {
+		min-height: 100vh;
+	}
 
 	&__container {
 		padding-top: 50px;

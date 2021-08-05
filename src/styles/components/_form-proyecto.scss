@@ -1,0 +1,32 @@
+.form-proyecto {
+	margin-top: 20px;
+	font-size: 20px;
+	&__titulo {
+		color: #fff;
+		text-align: center;
+	}
+	&__field {
+		display: flex;
+		justify-content: center;
+		margin-top: $unit * 2;
+	}
+	&__input {
+		width: 100%;
+		height: $unit * 3;
+		border: none;
+		outline: none;
+		font-size: $unit * 2;
+		padding-left: $unit;
+	}
+	&__btn {
+		@include btn(#fff, $azul);
+		width: 100%;
+		padding: 5px 0;
+		font-size: $unit * 2.2;
+	}
+	&__error {
+		background-color: $rojo;
+		color: #fff;
+		font-weight: 500;
+	}
+}

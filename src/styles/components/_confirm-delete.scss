@@ -1,0 +1,61 @@
+.confirm-delete {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: fixed;
+	width: 300px;
+	height: 200px;
+	background-color: #f3f3f3;
+	top: calc(50% - 150px);
+	left: calc(50% - 100px);
+	border: 1px solid $negro;
+	box-shadow: $box-shadow;
+	border-radius: 5px;
+
+	h2 {
+		color: $negro;
+		text-align: center;
+	}
+	p {
+		text-align: center;
+	}
+	.botones {
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+	}
+	.btn-cancelar {
+		padding: 10px 15px;
+		background-color: $azul;
+		border: none;
+		outline: none;
+		color: #fff;
+		font-weight: 600;
+		cursor: pointer;
+		margin-bottom: 20px;
+		font-size: 16px;
+		border-radius: 5px;
+		transition: $transition;
+
+		&:hover {
+			background-color: darken($color: $azul, $amount: 5);
+		}
+	}
+	.btn-eliminar {
+		padding: 10px 15px;
+		background-color: $rojo;
+		border: none;
+		outline: none;
+		color: #fff;
+		font-weight: 600;
+		cursor: pointer;
+		margin-bottom: 20px;
+		font-size: 16px;
+		border-radius: 5px;
+		transition: $transition;
+
+		&:hover {
+			background-color: darken($color: $rojo, $amount: 5);
+		}
+	}
+}

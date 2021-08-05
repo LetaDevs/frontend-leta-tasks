@@ -1,0 +1,95 @@
+.content-header {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	border-bottom: 2px solid $gris;
+	padding-bottom: 10px;
+
+	@include mq($xl) {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		gap: 20px;
+	}
+
+	&__proyecto {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		@include mq($xl) {
+			width: 50%;
+		}
+
+		&-buttons {
+			display: flex;
+		}
+	}
+
+	&__form-tarea {
+		margin-top: 20px;
+		width: 100%;
+
+		@include mq($xl) {
+			margin-top: 0;
+			width: 50%;
+		}
+	}
+}
+
+.proyecto__btn {
+	width: 25px;
+	height: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: transparent;
+	margin-left: 10px;
+	border: 2px solid $negro;
+	outline: none;
+	border-radius: 5px;
+
+	&:hover {
+		cursor: pointer;
+		background-color: $azul;
+		border: 2px solid $azul;
+	}
+
+	&-edit {
+		width: 15px;
+		height: 15px;
+		background-image: url('static/img/edit.svg');
+		background-size: cover;
+		background-position: center center;
+	}
+
+	&-delete {
+		width: 15px;
+		height: 15px;
+		background-image: url('static/img/delete.svg');
+		background-size: cover;
+		background-position: center center;
+	}
+}
+
+.form-tareas {
+	display: flex;
+	align-items: center;
+	&__input {
+		width: 70%;
+		border: 2px solid $gris;
+		height: 30px;
+		outline: none;
+		padding-left: 5px;
+		font-weight: 600;
+	}
+	&__btn {
+		@include btn(#fff, $azul);
+		padding: 0;
+		width: 30%;
+		height: 30px;
+		font-size: 16px;
+		border: none;
+	}
+}

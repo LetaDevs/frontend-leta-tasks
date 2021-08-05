@@ -4,6 +4,9 @@ import {useHistory} from 'react-router-dom';
 export const AuthContext = createContext();
 
 const AuthProvider = (props) => {
+	let currentJwt = JSON.parse(localStorage.getItem('token'));
+	if (currentJwt === null) currentJwt = '';
+
 	const [fetching, setFetching] = useState(false);
 	const [resultado, setResultado] = useState({});
 	const [resetresultado, setResetResultado] = useState(false);
@@ -13,7 +16,29 @@ const AuthProvider = (props) => {
 	const [resetpassword, setResetPassword] = useState('');
 	const [nuevopassword, setNuevoPassword] = useState({});
 
+	const [jwt, setJwt] = useState(currentJwt);
+	const [currentUser, setCurrentUser] = useState({});
+
 	const history = useHistory();
+
+	useEffect(() => {
+		if (jwt === '') return;
+
+		const obtenerUsuario = async () => {
+			const url = `${process.env.REACT_APP_BACKEND_URL}/api/v1/autenticacion`;
+
+			const consulta = await fetch(url, {
+				method: 'POST',
+				body: JSON.stringify({token: jwt}),
+				headers: {'Content-Type': 'application/json'},
+			});
+			const resp = await consulta.json();
+			if (resp.code === 200) {
+				setCurrentUser(resp.usuario);
+			}
+		};
+		obtenerUsuario();
+	}, [jwt]);
 
 	useEffect(() => {
 		if (resetresultado) {
@@ -73,10 +98,11 @@ const AuthProvider = (props) => {
 					msg: resp.errors[0].msg,
 				});
 			} else {
+				setJwt(resp.token);
 				localStorage.setItem('token', JSON.stringify(resp.token));
 				setFetching(false);
 				setLogin({});
-				history.push('/');
+				history.push('/dashboard');
 			}
 		};
 		iniciarSesion();
@@ -181,6 +207,8 @@ const AuthProvider = (props) => {
 	return (
 		<AuthContext.Provider
 			value={{
+				currentUser,
+				jwt,
 				fetching,
 				resultado,
 				setResultado,

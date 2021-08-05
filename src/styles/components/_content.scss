@@ -1,0 +1,5 @@
+.content {
+	@include mq($xl) {
+		max-width: 80%;
+	}
+}
