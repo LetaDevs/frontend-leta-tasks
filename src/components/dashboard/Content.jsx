@@ -1,17 +1,14 @@
-import React, {useEffect, useContext} from 'react';
+import React from 'react';
 import ContentHeader from './ContentHeader';
-import {ProyectosContext} from '../../contexts/ProyectosContext';
+import ListaTareas from './ListaTareas';
 
-const Content = ({proyectoUrl}) => {
-	const {proyectoActual, setUrlProyectoActual} = useContext(ProyectosContext);
-
-	useEffect(() => {
-		setUrlProyectoActual(proyectoUrl);
-	}, [proyectoUrl]);
-
+const Content = () => {
 	return (
 		<div className='content'>
-			<ContentHeader proyectoActual={proyectoActual} />
+			<ContentHeader />
+			<div>
+				<ListaTareas />
+			</div>
 		</div>
 	);
 };

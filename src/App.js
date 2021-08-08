@@ -7,27 +7,30 @@ import VerificarToken from './components/forms/VerificarToken';
 import NuevoPassword from './components/forms/NuevoPassword';
 import AuthProvider from './contexts/AuthContext';
 import Dashboard from './components/Dashboard';
-import ProyectosProvider from './contexts/ProyectosContext';
+import ProyectosState from './contexts/proyectos/ProyectosState';
+import TareasState from './contexts/tareas/TareasState';
 
 function App() {
 	return (
 		<div className='App'>
 			<Router>
 				<AuthProvider>
-					<ProyectosProvider>
-						<div>
-							<Switch>
-								<Route exact path='/' component={Home} />
-								<Route path='/sign-up' component={CrearCuenta} />
-								<Route path='/log-in' component={IniciarSesion} />
-								<Route path='/re-password' component={RePassword} />
-								<Route path='/token-verify' component={VerificarToken} />
-								<Route path='/reset-password/:token' component={NuevoPassword} />
-								<Route path='/dashboard/:proyectoUrl' component={Dashboard} />
-								<Route path='/dashboard' component={Dashboard} />
-							</Switch>
-						</div>
-					</ProyectosProvider>
+					<ProyectosState>
+						<TareasState>
+							<div>
+								<Switch>
+									<Route exact path='/' component={Home} />
+									<Route path='/sign-up' component={CrearCuenta} />
+									<Route path='/log-in' component={IniciarSesion} />
+									<Route path='/re-password' component={RePassword} />
+									<Route path='/token-verify' component={VerificarToken} />
+									<Route path='/reset-password/:token' component={NuevoPassword} />
+									<Route path='/dashboard/proyectos/:proyectoUrl' component={Dashboard} />
+									<Route path='/dashboard' component={Dashboard} />
+								</Switch>
+							</div>
+						</TareasState>
+					</ProyectosState>
 				</AuthProvider>
 			</Router>
 		</div>

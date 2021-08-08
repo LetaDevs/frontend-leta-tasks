@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import 'animate.css';
 
-const ConfirmDelete = ({titulo, setEliminar, setConfirmar}) => {
+const ConfirmDelete = ({titulo, setEliminar, setConfirmar, tareas}) => {
 	useEffect(() => {
 		setConfirmar(false);
+		// eslint-disable-next-line
 	}, []);
 
 	const cancelar = () => {
@@ -16,7 +17,7 @@ const ConfirmDelete = ({titulo, setEliminar, setConfirmar}) => {
 	};
 
 	return (
-		<div className='confirm-delete animate__animated animate__headShake'>
+		<div className={`${tareas ? 'confirm-delete-tareas' : 'confirm-delete'} animate__animated animate__headShake`}>
 			<h2>{titulo}</h2>
 			<p>una vez eliminado no hay vuelta atras</p>
 			<div className='botones'>

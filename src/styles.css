@@ -1315,8 +1315,6 @@ img {
 
 .proyecto__btn:hover {
   cursor: pointer;
-  background-color: #0984e3;
-  border: 2px solid #0984e3;
 }
 
 .proyecto__btn-edit {
@@ -1331,6 +1329,19 @@ img {
   width: 15px;
   height: 15px;
   background-image: url("static/img/delete.svg");
+  background-size: cover;
+  background-position: center center;
+}
+
+.proyecto__btn-check {
+  width: 15px;
+  height: 15px;
+}
+
+.proyecto__btn-checked {
+  width: 15px;
+  height: 15px;
+  background-image: url("static/img/checked.svg");
   background-size: cover;
   background-position: center center;
 }
@@ -1351,6 +1362,11 @@ img {
   outline: none;
   padding-left: 5px;
   font-weight: 600;
+}
+
+.form-tareas__input-error {
+  background-color: #d63031;
+  color: #fff;
 }
 
 .form-tareas__btn {
@@ -1443,11 +1459,12 @@ img {
   height: 200px;
   background-color: #f3f3f3;
   top: calc(50% - 150px);
-  left: calc(50% - 100px);
+  left: calc(50% - 150px);
   border: 1px solid #2d3436;
   -webkit-box-shadow: 0 2px 10px 0 #2d3436;
           box-shadow: 0 2px 10px 0 #2d3436;
   border-radius: 5px;
+  z-index: 10000;
 }
 
 .confirm-delete h2 {
@@ -1504,4 +1521,122 @@ img {
 
 .confirm-delete .btn-eliminar:hover {
   background-color: #c52728;
+}
+
+.confirm-delete-tareas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: fixed;
+  width: 300px;
+  height: 200px;
+  background-color: #f3f3f3;
+  top: calc(50% + 150px);
+  left: calc(50% - 150px);
+  border: 1px solid #2d3436;
+  -webkit-box-shadow: 0 2px 10px 0 #2d3436;
+          box-shadow: 0 2px 10px 0 #2d3436;
+  border-radius: 5px;
+  z-index: 10000;
+}
+
+.confirm-delete-tareas h2 {
+  color: #2d3436;
+  text-align: center;
+}
+
+.confirm-delete-tareas p {
+  text-align: center;
+}
+
+.confirm-delete-tareas .botones {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.confirm-delete-tareas .btn-cancelar {
+  padding: 10px 15px;
+  background-color: #0984e3;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.confirm-delete-tareas .btn-cancelar:hover {
+  background-color: #0876ca;
+}
+
+.confirm-delete-tareas .btn-eliminar {
+  padding: 10px 15px;
+  background-color: #d63031;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.confirm-delete-tareas .btn-eliminar:hover {
+  background-color: #c52728;
+}
+
+.tareas {
+  width: 100%;
+  padding: 20px 0;
+  position: relative;
+}
+
+.tarea {
+  width: 100%;
+  margin-top: 20px;
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #e7ebeb;
+  -webkit-box-shadow: 0 2px 5px 0 #dfe6e9;
+          box-shadow: 0 2px 5px 0 #dfe6e9;
+  border: 1px solid #ccc;
+}
+
+@media (min-width: 1200px) {
+  .tarea {
+    max-width: 90%;
+    margin: 20px auto;
+  }
+}
+
+.tarea__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }

@@ -15,7 +15,7 @@ const IniciarSesion = () => {
 	});
 	const [alerta, setAlerta] = useState(false);
 
-	const [formValues, setFormValues] = useForm({
+	const [formValues, setFormValues, handleChange] = useForm({
 		email: '',
 		password: '',
 	});
@@ -84,7 +84,7 @@ const IniciarSesion = () => {
 							id='email'
 							className='form__input'
 							autoComplete='off'
-							onChange={setFormValues}
+							onChange={handleChange}
 						/>
 					</div>
 					<div className='form__field'>
@@ -98,7 +98,7 @@ const IniciarSesion = () => {
 							id='password'
 							className='form__input'
 							autoComplete='off'
-							onChange={setFormValues}
+							onChange={handleChange}
 						/>
 					</div>
 

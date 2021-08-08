@@ -17,7 +17,7 @@ const CrearCuenta = () => {
 	});
 	const [alerta, setAlerta] = useState(false);
 
-	const [formValues, handleChange, resetForm] = useForm({
+	const [formValues, setFormValues, handleChange, resetForm] = useForm({
 		name: '',
 		email: '',
 		password: '',

@@ -1,12 +1,15 @@
 import React, {useState, useContext} from 'react';
-import {ProyectosContext} from '../../../contexts/ProyectosContext';
+import {AuthContext} from '../../../contexts/AuthContext';
+import proyectosContext from '../../../contexts/proyectos/proyectosContext';
 
-const EditarProyecto = ({setEditar, proyectoActual}) => {
-	const {setEditProyecto} = useContext(ProyectosContext);
+const EditarProyecto = () => {
+	const {proyecto, editarProyecto, obtenerProyectos, actualizarProyecto, proyectoActual} = useContext(proyectosContext);
+	const {jwt, currentUser} = useContext(AuthContext);
 
 	const [error, setError] = useState(false);
+
 	const [formValues, setFormValues] = useState({
-		titulo: proyectoActual.titulo,
+		titulo: proyecto.titulo,
 	});
 
 	const {titulo} = formValues;
@@ -18,7 +21,7 @@ const EditarProyecto = ({setEditar, proyectoActual}) => {
 		});
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		if (titulo.trim() === '') {
@@ -30,8 +33,10 @@ const EditarProyecto = ({setEditar, proyectoActual}) => {
 			return;
 		}
 
-		setEditProyecto(titulo);
-		setEditar(false);
+		await actualizarProyecto(formValues, jwt, proyecto._id);
+		await obtenerProyectos(currentUser.id, jwt);
+		await proyectoActual(proyecto.url, jwt);
+		editarProyecto(false);
 	};
 
 	return (
@@ -43,7 +48,7 @@ const EditarProyecto = ({setEditar, proyectoActual}) => {
 					name='titulo'
 					onChange={handleChange}
 					autoComplete='off'
-					className={error && 'error'}
+					className={error ? 'error' : ''}
 				/>
 				<button>guardar</button>
 			</form>

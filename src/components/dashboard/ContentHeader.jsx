@@ -1,65 +1,59 @@
 import React, {useEffect, useState, useContext} from 'react';
+import {AuthContext} from '../../contexts/AuthContext';
+import proyectosContext from '../../contexts/proyectos/proyectosContext';
 import ConfirmDelete from './ConfirmDelete';
 import EditarProyecto from './forms/EditarProyecto';
-import {ProyectosContext} from '../../contexts/ProyectosContext';
+import {useHistory} from 'react-router-dom';
+import FormTarea from './forms/FormTarea';
 
-const ContentHeader = ({proyectoActual}) => {
-	const {setEliminarProyecto} = useContext(ProyectosContext);
+const ContentHeader = () => {
+	const {proyecto, editar, editarProyecto, eliminarProyecto, obtenerProyectos} = useContext(proyectosContext);
+	const {jwt, currentUser} = useContext(AuthContext);
 
-	const [editar, setEditar] = useState(false);
 	const [eliminar, setEliminar] = useState(false);
 	const [confirmar, setConfirmar] = useState(false);
 
-	useEffect(() => {
-		setEditar(false);
-	}, [proyectoActual]);
+	const history = useHistory();
+
+	useEffect(() => {}, [proyecto]);
 
 	useEffect(() => {
 		if (!confirmar) return;
 
-		setEliminarProyecto(true);
+		const acciones = async () => {
+			await eliminarProyecto(proyecto._id, jwt);
+			await obtenerProyectos(currentUser.id, jwt);
+			history.push('/dashboard');
+		};
+		acciones();
+		//eslint-disable-next-line
 	}, [confirmar]);
-
-	const editarProyecto = () => {
-		setEditar(true);
-	};
-
-	const eliminarProyecto = async () => {
-		setEliminar(true);
-	};
 
 	return (
 		<div className='content-header'>
 			{eliminar && (
 				<ConfirmDelete
-					titulo='seguro quieres eliminar el proyecto?'
+					titulo='seguro quieres borrar este proyecto?'
 					setEliminar={setEliminar}
 					setConfirmar={setConfirmar}
 				/>
 			)}
-			{!editar === true ? (
+			{!editar ? (
 				<div className='content-header__proyecto'>
-					<h2>{proyectoActual.titulo}</h2>
+					<h2>{proyecto?.titulo}</h2>
 					<div className='content-header__proyecto-buttons'>
-						<button className='proyecto__btn' onClick={editarProyecto}>
+						<button className='proyecto__btn' onClick={() => editarProyecto(true)}>
 							<div className='proyecto__btn-edit'></div>
 						</button>
-						<button className='proyecto__btn' onClick={eliminarProyecto}>
+						<button className='proyecto__btn' onClick={() => setEliminar(true)}>
 							<div className='proyecto__btn-delete'></div>
 						</button>
 					</div>
 				</div>
 			) : (
-				<EditarProyecto setEditar={setEditar} proyectoActual={proyectoActual} />
+				<EditarProyecto />
 			)}
-			<div className='content-header__form-tarea'>
-				<form className='form-tareas'>
-					<input type='text' className='form-tareas__input' placeholder='nueva tarea' />
-					<button type='submit' className='form-tareas__btn'>
-						Agregar
-					</button>
-				</form>
-			</div>
+			<FormTarea />
 		</div>
 	);
 };

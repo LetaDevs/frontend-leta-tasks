@@ -16,7 +16,7 @@ const VerificarToken = () => {
 	});
 	const [alerta, setAlerta] = useState(false);
 
-	const [formValues, setFormValues] = useForm({
+	const [formValues, setFormValues, handleChange] = useForm({
 		token: '',
 	});
 	const {token} = formValues;
@@ -83,7 +83,7 @@ const VerificarToken = () => {
 							id='token'
 							className='form__input'
 							autoComplete='off'
-							onChange={setFormValues}
+							onChange={handleChange}
 						/>
 					</div>
 

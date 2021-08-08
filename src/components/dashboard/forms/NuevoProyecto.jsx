@@ -1,9 +1,11 @@
 import React, {useState, useContext} from 'react';
 import useForm from '../../../hooks/useForm';
-import {ProyectosContext} from '../../../contexts/ProyectosContext';
+import proyectosContext from '../../../contexts/proyectos/proyectosContext';
+import {AuthContext} from '../../../contexts/AuthContext';
 
 const NuevoProyecto = () => {
-	const {setNuevoProyecto} = useContext(ProyectosContext);
+	const {agregarProyecto, obtenerProyectos} = useContext(proyectosContext);
+	const {jwt, currentUser} = useContext(AuthContext);
 
 	const [error, setError] = useState(false);
 	const [formValues, handleChange, resetForm] = useForm({
@@ -23,7 +25,8 @@ const NuevoProyecto = () => {
 			return;
 		}
 
-		setNuevoProyecto(formValues);
+		agregarProyecto(formValues, jwt);
+		obtenerProyectos(currentUser.id, jwt);
 		resetForm();
 	};
 
@@ -36,7 +39,7 @@ const NuevoProyecto = () => {
 						type='text'
 						className={`form-proyecto__input ${error && 'form-proyecto__error'}`}
 						name='titulo'
-						value={error ? 'ingresa un titulo válido !' : titulo}
+						value={!error ? titulo : 'ingresa un titulo válido !'}
 						onChange={handleChange}
 					/>
 				</div>

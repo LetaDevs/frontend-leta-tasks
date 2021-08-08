@@ -1,0 +1,25 @@
+.tareas {
+	width: 100%;
+	padding: 20px 0;
+	position: relative;
+}
+.tarea {
+	width: 100%;
+	margin-top: 20px;
+	padding: 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: $bg-tarea;
+	box-shadow: 0 2px 5px 0 $gris;
+	border: 1px solid #ccc;
+
+	@include mq($xl) {
+		max-width: 90%;
+		margin: 20px auto;
+	}
+
+	&__buttons {
+		display: flex;
+	}
+}

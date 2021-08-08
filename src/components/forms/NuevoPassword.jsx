@@ -16,7 +16,7 @@ const NuevoPassword = () => {
 	});
 	const [alerta, setAlerta] = useState(false);
 
-	const [formValues, handleChange, resetForm] = useForm({
+	const [formValues, setFormValues, handleChange, resetForm] = useForm({
 		password: '',
 		rePassword: '',
 	});

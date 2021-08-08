@@ -1,5 +1,7 @@
-import React, {useContext} from 'react';
+import React, {useEffect, useContext} from 'react';
 import {Link, useParams} from 'react-router-dom';
+import proyectosContext from '../contexts/proyectos/proyectosContext';
+import {AuthContext} from '../contexts/AuthContext';
 
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,8 +14,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 
 import Sidebar from './dashboard/Sidebar';
-import Upbar from './dashboard/Upbar';
 import Content from './dashboard/Content';
+import tareasContext from '../contexts/tareas/tareasContext';
 
 const drawerWidth = 320;
 
@@ -53,6 +55,33 @@ const useStyles = makeStyles((theme) => ({
 
 function Dashboard(props) {
 	const {proyectoUrl} = useParams();
+
+	const {proyecto, obtenerProyectos, proyectoActual} = useContext(proyectosContext);
+	const {obtenerTareas} = useContext(tareasContext);
+	const {currentUser, jwt} = useContext(AuthContext);
+
+	useEffect(() => {
+		if (Object.keys(currentUser).length === 0) return;
+
+		obtenerProyectos(currentUser.id, jwt);
+		proyectoActual(proyectoUrl, jwt);
+
+		// eslint-disable-next-line
+	}, [currentUser, proyectoUrl]);
+
+	useEffect(() => {
+		if (proyecto === undefined) return;
+
+		proyectoActual(proyectoUrl, jwt);
+
+		// eslint-disable-next-line
+	}, [proyectoUrl]);
+
+	useEffect(() => {
+		if (proyecto === undefined) return;
+
+		obtenerTareas(proyecto._id, jwt);
+	}, [proyecto]);
 
 	const {window} = props;
 	const classes = useStyles();

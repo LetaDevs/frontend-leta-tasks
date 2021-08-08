@@ -1,10 +1,16 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useEffect, useContext} from 'react';
 import {NavLink} from 'react-router-dom';
-import {ProyectosContext} from '../../contexts/ProyectosContext';
+import proyectosContext from '../../contexts/proyectos/proyectosContext';
 import 'animate.css';
+import tareasContext from '../../contexts/tareas/tareasContext';
+import {AuthContext} from '../../contexts/AuthContext';
 
 const ListaProyectos = () => {
-	const {proyectos} = useContext(ProyectosContext);
+	const {proyectos} = useContext(proyectosContext);
+	const {obtenerTareas} = useContext(tareasContext);
+	const {jwt} = useContext(AuthContext);
+
+	useEffect(() => {}, [proyectos]);
 
 	if (proyectos)
 		return (
@@ -16,7 +22,7 @@ const ListaProyectos = () => {
 							{proyectos.map((proyecto) => (
 								<li key={proyecto._id}>
 									<NavLink
-										to={`/dashboard/${proyecto.url}`}
+										to={`/dashboard/proyectos/${proyecto.url}`}
 										exact
 										activeClassName='proyecto--active'
 										className='lista-proyectos__proyecto animate__animated animate__fadeInUp'>
