@@ -23,9 +23,7 @@ const TareasState = (props) => {
 				method: 'POST',
 				body: JSON.stringify(tarea),
 				headers: {'Content-Type': 'application/json', 'x-auth-token': jwt},
-			})
-				.then((resp) => resp.json())
-				.then((datos) => console.log(datos));
+			});
 		} catch (error) {
 			console.log(error);
 		}
