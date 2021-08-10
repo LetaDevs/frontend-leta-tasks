@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import {AuthContext} from '../../contexts/AuthContext';
 import Alert from '../extras/Alert';
@@ -7,19 +7,26 @@ import Spinner from '../extras/Spinner';
 import 'animate.css';
 
 const IniciarSesion = () => {
-	const {setLogin, fetching, resultado, setResetResultado} = useContext(AuthContext);
+	const {autenticado, setLogin, fetching, resultado, setResetResultado} = useContext(AuthContext);
 
 	const [msg, setMsg] = useState({
 		categoria: '',
 		msg: '',
 	});
 	const [alerta, setAlerta] = useState(false);
-
+	// eslint-disable-next-line
 	const [formValues, setFormValues, handleChange] = useForm({
 		email: '',
 		password: '',
 	});
 	const {email, password} = formValues;
+
+	const history = useHistory();
+
+	useEffect(() => {
+		if (autenticado) history.push('/dashboard');
+		//eslint-disable-next-line
+	}, [autenticado]);
 
 	useEffect(() => {
 		if (Object.keys(resultado).length === 0) return;

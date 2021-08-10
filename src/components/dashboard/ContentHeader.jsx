@@ -30,31 +30,39 @@ const ContentHeader = () => {
 	}, [confirmar]);
 
 	return (
-		<div className='content-header'>
-			{eliminar && (
-				<ConfirmDelete
-					titulo='seguro quieres borrar este proyecto?'
-					setEliminar={setEliminar}
-					setConfirmar={setConfirmar}
-				/>
-			)}
-			{!editar ? (
-				<div className='content-header__proyecto'>
-					<h2>{proyecto?.titulo}</h2>
-					<div className='content-header__proyecto-buttons'>
-						<button className='proyecto__btn' onClick={() => editarProyecto(true)}>
-							<div className='proyecto__btn-edit'></div>
-						</button>
-						<button className='proyecto__btn' onClick={() => setEliminar(true)}>
-							<div className='proyecto__btn-delete'></div>
-						</button>
-					</div>
-				</div>
-			) : (
-				<EditarProyecto />
-			)}
-			<FormTarea />
-		</div>
+		<>
+			<div className='content-header'>
+				{proyecto ? (
+					<>
+						{eliminar && (
+							<ConfirmDelete
+								titulo='seguro quieres borrar este proyecto?'
+								setEliminar={setEliminar}
+								setConfirmar={setConfirmar}
+							/>
+						)}
+						{!editar ? (
+							<div className='content-header__proyecto'>
+								<h2>{proyecto?.titulo}</h2>
+								<div className='content-header__proyecto-buttons'>
+									<button className='proyecto__btn' onClick={() => editarProyecto(true)}>
+										<div className='proyecto__btn-edit'></div>
+									</button>
+									<button className='proyecto__btn' onClick={() => setEliminar(true)}>
+										<div className='proyecto__btn-delete'></div>
+									</button>
+								</div>
+							</div>
+						) : (
+							<EditarProyecto />
+						)}
+						<FormTarea />
+					</>
+				) : (
+					<h3>Elige un proyecto para trabajar</h3>
+				)}
+			</div>
+		</>
 	);
 };
 

@@ -51,6 +51,14 @@
 			color: $azul;
 		}
 	}
+
+	&__user {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		color: #fff;
+		gap: 20px;
+	}
 }
 .logo {
 	color: #fff;

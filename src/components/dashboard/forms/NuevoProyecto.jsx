@@ -8,7 +8,8 @@ const NuevoProyecto = () => {
 	const {jwt, currentUser} = useContext(AuthContext);
 
 	const [error, setError] = useState(false);
-	const [formValues, handleChange, resetForm] = useForm({
+	// eslint-disable-next-line
+	const [formValues, setFormValues, handleChange, resetForm] = useForm({
 		titulo: '',
 	});
 	const {titulo} = formValues;
@@ -40,7 +41,7 @@ const NuevoProyecto = () => {
 						className={`form-proyecto__input ${error && 'form-proyecto__error'}`}
 						name='titulo'
 						value={!error ? titulo : 'ingresa un titulo válido !'}
-						onChange={handleChange}
+						onChange={(e) => handleChange(e)}
 					/>
 				</div>
 				<div className='form-proyecto__field'>

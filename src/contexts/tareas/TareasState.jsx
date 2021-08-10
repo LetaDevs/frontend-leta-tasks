@@ -3,7 +3,7 @@ import React, {useReducer} from 'react';
 import tareasContext from './tareasContext';
 import tareasReducer from './tareasReducer';
 
-import {OBTENER_TAREAS, EDITANDO_TAREA, TAREA_EDITAR, ACTUALIZAR_PROYECTO, ACTUALIZAR_TAREA} from '../../types';
+import {OBTENER_TAREAS, EDITANDO_TAREA, TAREA_EDITAR, ACTUALIZAR_TAREA} from '../../types';
 
 const TareasState = (props) => {
 	const initialState = {

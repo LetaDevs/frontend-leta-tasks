@@ -146,6 +146,20 @@ img {
   color: #0984e3;
 }
 
+.navbar__user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+  gap: 20px;
+}
+
 .logo {
   color: #fff;
   font-size: 24px;
@@ -1639,4 +1653,27 @@ img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.sidebar {
+  position: relative;
+}
+
+.sidebar__cerrar-sesion {
+  position: absolute;
+  bottom: 20px;
+  background-color: #d63031;
+  padding: 5px 10px;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  z-index: 100;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.sidebar__cerrar-sesion:hover {
+  cursor: pointer;
+  background-color: #b02324;
 }

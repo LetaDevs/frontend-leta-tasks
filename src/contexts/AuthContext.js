@@ -18,11 +18,16 @@ const AuthProvider = (props) => {
 
 	const [jwt, setJwt] = useState(currentJwt);
 	const [currentUser, setCurrentUser] = useState({});
+	const [autenticado, setAutenticado] = useState(false);
+	const [cargando, setCargando] = useState(true);
 
 	const history = useHistory();
 
 	useEffect(() => {
-		if (jwt === '') return;
+		if (jwt === '') {
+			setCargando(false);
+			return;
+		}
 
 		const obtenerUsuario = async () => {
 			const url = `${process.env.REACT_APP_BACKEND_URL}/api/v1/autenticacion`;
@@ -35,6 +40,8 @@ const AuthProvider = (props) => {
 			const resp = await consulta.json();
 			if (resp.code === 200) {
 				setCurrentUser(resp.usuario);
+				setCargando(false);
+				setAutenticado(true);
 			}
 		};
 		obtenerUsuario();
@@ -102,6 +109,7 @@ const AuthProvider = (props) => {
 				localStorage.setItem('token', JSON.stringify(resp.token));
 				setFetching(false);
 				setLogin({});
+				setAutenticado(true);
 				history.push('/dashboard');
 			}
 		};
@@ -211,13 +219,17 @@ const AuthProvider = (props) => {
 				jwt,
 				fetching,
 				resultado,
+				cargando,
+				autenticado,
 				setResultado,
 				setNuevaCuenta,
 				setLogin,
+				setCurrentUser,
 				setResetResultado,
 				setActivarCuenta,
 				setResetPassword,
 				setNuevoPassword,
+				setJwt,
 			}}>
 			{props.children}
 		</AuthContext.Provider>

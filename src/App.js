@@ -9,6 +9,7 @@ import AuthProvider from './contexts/AuthContext';
 import Dashboard from './components/Dashboard';
 import ProyectosState from './contexts/proyectos/ProyectosState';
 import TareasState from './contexts/tareas/TareasState';
+import RutaProtegida from './components/extras/RutaProtegida';
 
 function App() {
 	return (
@@ -25,8 +26,8 @@ function App() {
 									<Route path='/re-password' component={RePassword} />
 									<Route path='/token-verify' component={VerificarToken} />
 									<Route path='/reset-password/:token' component={NuevoPassword} />
-									<Route path='/dashboard/proyectos/:proyectoUrl' component={Dashboard} />
-									<Route path='/dashboard' component={Dashboard} />
+									<RutaProtegida path='/dashboard/proyectos/:proyectoUrl' component={Dashboard} />
+									<RutaProtegida path='/dashboard' component={Dashboard} />
 								</Switch>
 							</div>
 						</TareasState>

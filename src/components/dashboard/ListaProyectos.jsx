@@ -2,13 +2,9 @@ import React, {useEffect, useContext} from 'react';
 import {NavLink} from 'react-router-dom';
 import proyectosContext from '../../contexts/proyectos/proyectosContext';
 import 'animate.css';
-import tareasContext from '../../contexts/tareas/tareasContext';
-import {AuthContext} from '../../contexts/AuthContext';
 
 const ListaProyectos = () => {
 	const {proyectos} = useContext(proyectosContext);
-	const {obtenerTareas} = useContext(tareasContext);
-	const {jwt} = useContext(AuthContext);
 
 	useEffect(() => {}, [proyectos]);
 

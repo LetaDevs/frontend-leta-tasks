@@ -18,6 +18,7 @@ const FormTarea = () => {
 		setFormValues({
 			titulo: tarea.titulo,
 		});
+		// eslint-disable-next-line
 	}, [tarea]);
 
 	const [error, setError] = useState(false);
@@ -61,7 +62,7 @@ const FormTarea = () => {
 					type='text'
 					className={`form-tareas__input ${error ? 'form-tareas__input-error' : ''}`}
 					name='titulo'
-					value={!error ? titulo : 'ingresa un titulo válido!'}
+					value={!error ? titulo || '' : 'ingresa un titulo válido!'}
 					placeholder='nueva tarea'
 					onChange={handleChange}
 				/>

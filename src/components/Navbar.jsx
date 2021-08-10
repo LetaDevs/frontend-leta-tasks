@@ -1,10 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import Hidden from '@material-ui/core/Hidden';
+import {AuthContext} from '../contexts/AuthContext';
 
 const Navbar = () => {
 	const [scroll, setScroll] = useState(false);
 	const [menu, setMenu] = useState(false);
+
+	const {currentUser} = useContext(AuthContext);
 
 	useEffect(() => {
 		window.onscroll = () => {
@@ -42,12 +45,27 @@ const Navbar = () => {
 							</a>
 						</nav>
 						<div className='navbar__auth'>
-							<Link to='/log-in' className='log-in'>
-								Iniciar sesión
-							</Link>
-							<Link to='/sign-up' className='sign-up'>
-								Registrarse
-							</Link>
+							{Object.keys(currentUser).length > 0 ? (
+								<div className='navbar__user'>
+									<Link to='/dashboard' className='log-in'>
+										Mis proyectos
+									</Link>
+									<div className='upbar__user'>
+										<div className='upbar__user-photo'>
+											<span>{currentUser?.nombre?.charAt(0).toUpperCase()}</span>
+										</div>
+									</div>
+								</div>
+							) : (
+								<>
+									<Link to='/log-in' className='log-in'>
+										Iniciar sesión
+									</Link>
+									<Link to='/sign-up' className='sign-up'>
+										Registrarse
+									</Link>
+								</>
+							)}
 						</div>
 					</Hidden>
 					<Hidden mdUp>
@@ -74,12 +92,20 @@ const Navbar = () => {
 							<a className='navbar__menu-two-link' href='#prices'>
 								Precios
 							</a>
-							<Link to='/log-in' className='btn navbar__menu-two-btn'>
-								Iniciar sesión
-							</Link>
-							<Link to='/sign-up' className='btn navbar__menu-two-btn'>
-								Registrarse
-							</Link>
+							{Object.keys(currentUser).length > 0 ? (
+								<Link to='/dashboard' className='btn navbar__menu-two-btn'>
+									Mis proyectos
+								</Link>
+							) : (
+								<>
+									<Link to='/log-in' className='btn navbar__menu-two-btn'>
+										Iniciar sesión
+									</Link>
+									<Link to='/sign-up' className='btn navbar__menu-two-btn'>
+										Registrarse
+									</Link>
+								</>
+							)}
 						</div>
 					</div>
 				</div>

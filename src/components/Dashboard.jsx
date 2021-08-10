@@ -16,6 +16,7 @@ import {makeStyles, useTheme} from '@material-ui/core/styles';
 import Sidebar from './dashboard/Sidebar';
 import Content from './dashboard/Content';
 import tareasContext from '../contexts/tareas/tareasContext';
+import Upbar from './dashboard/Upbar';
 
 const drawerWidth = 320;
 
@@ -64,13 +65,19 @@ function Dashboard(props) {
 		if (Object.keys(currentUser).length === 0) return;
 
 		obtenerProyectos(currentUser.id, jwt);
+
+		// eslint-disable-next-line
+	}, [currentUser]);
+	useEffect(() => {
+		if (proyectoUrl === undefined) return;
+
 		proyectoActual(proyectoUrl, jwt);
 
 		// eslint-disable-next-line
-	}, [currentUser, proyectoUrl]);
+	}, [proyectoUrl]);
 
 	useEffect(() => {
-		if (proyecto === undefined) return;
+		if (proyectoUrl === undefined) return;
 
 		proyectoActual(proyectoUrl, jwt);
 
@@ -80,8 +87,11 @@ function Dashboard(props) {
 	useEffect(() => {
 		if (proyecto === undefined) return;
 
-		obtenerTareas(proyecto._id, jwt);
-	}, [proyecto]);
+		if (proyecto?._id) {
+			obtenerTareas(proyecto._id, jwt);
+		}
+		//eslint-disable-next-line
+	}, [proyecto, jwt]);
 
 	const {window} = props;
 	const classes = useStyles();
@@ -125,19 +135,7 @@ function Dashboard(props) {
 							<MenuIcon />
 						</IconButton>
 
-						<div className='upbar'>
-							<Link to='/dashboard'>
-								<h2 className='sidebar__logo'>
-									LETA<span className='sidebar__logo-dos'>Tasks</span>
-								</h2>
-							</Link>
-							<div className='upbar__user'>
-								<p>hola, Eduardo</p>
-								<div className='upbar__user-photo'>
-									<span>E</span>
-								</div>
-							</div>
-						</div>
+						<Upbar />
 					</Toolbar>
 				</Hidden>
 			</AppBar>

@@ -3,10 +3,10 @@ import {useState} from 'react';
 const useForm = (initialState = {}) => {
 	const [formValues, setFormValues] = useState(initialState);
 
-	const handleInputChange = ({target}) => {
+	const handleInputChange = (e) => {
 		setFormValues({
 			...formValues,
-			[target.name]: target.value,
+			[e.target.name]: e.target.value,
 		});
 	};
 

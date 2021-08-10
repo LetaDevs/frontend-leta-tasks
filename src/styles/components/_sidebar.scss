@@ -1,0 +1,21 @@
+.sidebar {
+	position: relative;
+
+	&__cerrar-sesion {
+		position: absolute;
+		bottom: 20px;
+		background-color: $rojo;
+		padding: 5px 10px;
+		color: #fff;
+		border: none;
+		outline: none;
+		font-weight: 600;
+		z-index: 100;
+		transition: $transition;
+
+		&:hover {
+			cursor: pointer;
+			background-color: darken($color: $rojo, $amount: 10);
+		}
+	}
+}
