@@ -84,11 +84,11 @@ const Footer = () => {
 					</div>
 				</div>
 				<div className='footer__social'>
-					<img src='./img/slack.svg' alt='slack icon' />
-					<img src='./img/github.svg' alt='github icon' />
-					<img src='./img/linkedin.svg' alt='linkedin icon' />
-					<img src='./img/twitter.svg' alt='twitter icon' />
-					<img src='./img/youtube.svg' alt='youtube icon' />
+					<img src='./img/slack.svg' alt='slack icon' width='30px' height='30px' />
+					<img src='./img/github.svg' alt='github icon' width='30px' height='30px' />
+					<img src='./img/linkedin.svg' alt='linkedin icon' width='30px' height='30px' />
+					<img src='./img/twitter.svg' alt='twitter icon' width='30px' height='30px' />
+					<img src='./img/youtube.svg' alt='youtube icon' width='30px' height='30px' />
 				</div>
 			</div>
 		</section>
