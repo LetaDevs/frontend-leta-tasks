@@ -27,11 +27,11 @@ const prices = () => {
 						<div className='card__benefits'>
 							<ul>
 								<li className='card__benefit'>
-									<img src='./img/check.svg' alt='check icon' />
+									<img src='./img/check.svg' alt='check icon' width='15px' height='15px' />
 									<span className='card__benefits-benefit'>Tareas ilimitadas</span>
 								</li>
 								<li className='card__benefit'>
-									<img src='./img/check.svg' alt='check icon' />
+									<img src='./img/check.svg' alt='check icon' width='15px' height='15px' />
 									<span className='card__benefits-benefit'>Proyectos ilimitados</span>
 								</li>
 							</ul>
@@ -51,19 +51,19 @@ const prices = () => {
 						<div className='card__benefits'>
 							<ul>
 								<li className='card__benefit'>
-									<img src='./img/check.svg' alt='check icon' />
+									<img src='./img/check.svg' alt='check icon' width='15px' height='15px' />
 									<span className='card__benefits-benefit'>Tareas ilimitadas</span>
 								</li>
 								<li className='card__benefit'>
-									<img src='./img/check.svg' alt='check icon' />
+									<img src='./img/check.svg' alt='check icon' width='15px' height='15px' />
 									<span className='card__benefits-benefit'>Proyectos ilimitados</span>
 								</li>
 								<li className='card__benefit'>
-									<img src='./img/check.svg' alt='check icon' />
+									<img src='./img/check.svg' alt='check icon' width='15px' height='15px' />
 									<span className='card__benefits-benefit'>Cronograma</span>
 								</li>
 								<li className='card__benefit'>
-									<img src='./img/check.svg' alt='check icon' />
+									<img src='./img/check.svg' alt='check icon' width='15px' height='15px' />
 									<span className='card__benefits-benefit'>Paneles ilimitados</span>
 								</li>
 							</ul>
@@ -83,27 +83,27 @@ const prices = () => {
 						<div className='card__benefits'>
 							<ul>
 								<li className='card__benefit'>
-									<img src='./img/check.svg' alt='check icon' />
+									<img src='./img/check.svg' alt='check icon' width='15px' height='15px' />
 									<span className='card__benefits-benefit'>Tareas ilimitadas</span>
 								</li>
 								<li className='card__benefit'>
-									<img src='./img/check.svg' alt='check icon' />
+									<img src='./img/check.svg' alt='check icon' width='15px' height='15px' />
 									<span className='card__benefits-benefit'>Proyectos ilimitados</span>
 								</li>
 								<li className='card__benefit'>
-									<img src='./img/check.svg' alt='check icon' />
+									<img src='./img/check.svg' alt='check icon' width='15px' height='15px' />
 									<span className='card__benefits-benefit'>Cronograma</span>
 								</li>
 								<li className='card__benefit'>
-									<img src='./img/check.svg' alt='check icon' />
+									<img src='./img/check.svg' alt='check icon' width='15px' height='15px' />
 									<span className='card__benefits-benefit'>Paneles ilimitados</span>
 								</li>
 								<li className='card__benefit'>
-									<img src='./img/check.svg' alt='check icon' />
+									<img src='./img/check.svg' alt='check icon' width='15px' height='15px' />
 									<span className='card__benefits-benefit'>Portafolios</span>
 								</li>
 								<li className='card__benefit'>
-									<img src='./img/check.svg' alt='check icon' />
+									<img src='./img/check.svg' alt='check icon' width='15px' height='15px' />
 									<span className='card__benefits-benefit'>Gestión de recursos</span>
 								</li>
 							</ul>

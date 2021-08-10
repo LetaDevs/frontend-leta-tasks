@@ -24,7 +24,7 @@ const Nosotros = () => {
 				</div>
 				<Hidden smDown>
 					<div className='about__img'>
-						<img src='./img/about.svg' alt='img about' />
+						<img src='./img/about.svg' alt='img about' width='100%' height='auto' />
 					</div>
 				</Hidden>
 			</div>
